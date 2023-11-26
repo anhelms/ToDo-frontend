@@ -7,7 +7,11 @@ export function ToDosShow(props) {
 
   return (
     <div>
-      <h1>Your Most Recent To Do:</h1>
+      <h1> Information</h1>
+      <p>Title: {props.toDo.title}</p>
+      <p>Description: {props.toDo.description}</p>
+      <p>Deadline: {props.toDo.deadline}</p>
+      <p>Completed?: {props.toDo.completed}</p>
       <form onSubmit={handleSubmit}>
         <input defaultValue={props.toDo.title} name="title" type="text" placeholder="Task" />{" "}
         <button type="submit"> Update Task</button>
