@@ -1,7 +1,10 @@
+import axios from "axios";
 import { ToDosNew } from "./ToDosNew";
 import { ToDosIndex } from "./ToDosIndex";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
@@ -25,9 +28,10 @@ export function Content() {
 
   return (
     <main>
-      <h1>Welcome to React!</h1>
-      <ToDosNew onCreateToDo={handleCreateToDo} />
-      <ToDosIndex toDos={toDos} />
+      <Routes>
+        <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
+        <Route path="/to-dos" element={<ToDosIndex toDos={toDos} />} />
+      </Routes>
     </main>
   );
 }
