@@ -6,7 +6,6 @@ export function ToDosIndex(props) {
       {props.toDos.map((toDo) => (
         <div key={toDo.id}>
           <h2>{toDo.title}</h2>
-          <p>{toDo.user_id}</p>
           <p>{toDo.description}</p>
           <p>{toDo.deadline}</p>
           <p>{toDo.completed}</p>

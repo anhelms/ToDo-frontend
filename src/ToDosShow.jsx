@@ -13,7 +13,18 @@ export function ToDosShow(props) {
       <p>Deadline: {props.toDo.deadline}</p>
       <p>Completed?: {props.toDo.completed ? "Yes" : "No"}</p>
       <form onSubmit={handleSubmit}>
-        <input defaultValue={props.toDo.title} name="title" type="text" placeholder="Task" />{" "}
+        <div className="form-group">
+          <input defaultValue={props.toDo.title} className="form-control" name="title" type="text" />
+        </div>
+        <div className="form-group">
+          <input defaultValue={props.toDo.description} className="form-control" name="description" type="text" />
+        </div>
+        <div className="form-group">
+          <input defaultValue={props.toDo.deadline} className="form-control" name="deadline" type="date" />
+        </div>
+        <div className="form-group">
+          <input defaultValue={props.toDo.completed} name="completed" type="checkbox" />
+        </div>
         <button type="submit"> Update Task</button>
       </form>
     </div>
