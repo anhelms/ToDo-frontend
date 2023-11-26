@@ -23,6 +23,13 @@ export function Content() {
     });
   };
 
+  const handleDestroyToDo = (toDo) => {
+    console.log("handleDestroyToDo", toDo);
+    axios.delete(`http://localhost:3000/todos/${toDo.id}.json`).then((response) => {
+        setToDos(toDos.filter((p) => p.id !== toDo.id));
+    });
+  };
+
   return (
     <main>
       <h1>Welcome to React!</h1>
