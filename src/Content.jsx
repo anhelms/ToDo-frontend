@@ -3,6 +3,7 @@ import { ToDosIndex } from "./ToDosIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { ToDosShow } from "./ToDosShow";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
@@ -47,6 +48,9 @@ export function Content() {
       <ToDosNew onCreateToDo={handleCreateToDo} />
       <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} />
       <ToDosIndex toDos={toDos} />
+      <Modal show={true}>
+        <h2>To Do's</h2>
+      </Modal>
     </main>
   );
 }
