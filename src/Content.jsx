@@ -68,7 +68,7 @@ export function Content() {
   };
 
   return (
-    <main>
+    <main className="container-fluid">
       <Routes>
         <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
         <Route path="/to-dos" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
