@@ -14,6 +14,7 @@ export function ToDosIndex(props) {
             Completed:
             <input type="checkbox" checked={toDo.completed} />
           </label>
+          <button onClick={() => props.onShowToDo(toDo)}>More Info</button>
         </div>
       ))}
     </div>
