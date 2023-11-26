@@ -68,16 +68,16 @@ export function Content() {
   };
 
   return (
-    <main>
+    <div className="container">
       <Routes>
         <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
         <Route path="/to-dos" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
-        <Route path="/" element={<ToDosIndex toDos={toDos} />} />
+        <Route path="/" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
       </Routes>
       <Modal show={isToDosShowVisible} onClose={handleClose}>
         <h2>To Dos</h2>
         <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
       </Modal>
-    </main>
+    </div>
   );
 }
