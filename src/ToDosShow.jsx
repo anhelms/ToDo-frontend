@@ -14,6 +14,7 @@ export function ToDosShow(props) {
       <p>Completed?: {props.toDo.completed}</p>
       <form onSubmit={handleSubmit}>
         <input defaultValue={props.toDo.title} name="title" type="text" placeholder="Task" />{" "}
+        <input defaultValue={props.toDo.description} name="description" type="text" />
         <button type="submit"> Update Task</button>
       </form>
     </div>
