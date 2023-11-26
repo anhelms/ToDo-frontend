@@ -24,7 +24,7 @@ export function ToDosNew(props) {
           Completed: <input name="completed" type="checkbox" />
         </div>
         <div>
-          <button type="submit">Create ToDo</button>
+          <button className="button" type="submit">Create ToDo</button>
         </div>
       </form>
     </div>
