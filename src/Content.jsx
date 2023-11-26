@@ -2,9 +2,11 @@ import { ToDosNew } from "./ToDosNew";
 import { ToDosIndex } from "./ToDosIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { ToDosShow } from "./ToDosShow";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
+  const [currentToDo, setCurrentToDo] = useState({});
 
   const handleIndexToDos = () => {
     console.log("another hello");
@@ -23,10 +25,27 @@ export function Content() {
     });
   };
 
+  const handleUpdateToDo = (id, params, successCallback) => {
+    console.log("handleUpdateToDo", params);
+    axios.patch(`http://localhost:3000/to_dos/${id}.json`, params).then((response) => {
+      setToDos(
+        toDos.map((toDo) => {
+          if (toDo.id === response.data.id) {
+            return response.data;
+          } else {
+            return toDo;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
   return (
     <main>
-      <h1>Welcome to React!</h1>
       <ToDosNew onCreateToDo={handleCreateToDo} />
+      <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} />
       <ToDosIndex toDos={toDos} />
     </main>
   );
