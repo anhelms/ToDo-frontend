@@ -1,11 +1,12 @@
 import axios from "axios";
 import { ToDosNew } from "./ToDosNew";
 import { ToDosIndex } from "./ToDosIndex";
+import { ToDosShow } from "./ToDosShow";
+import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ToDosShow } from "./ToDosShow";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
