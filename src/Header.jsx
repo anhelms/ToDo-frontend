@@ -22,7 +22,7 @@ export function Header() {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <Link class="nav-link active" aria-current="page" to="/to-dos">
+                <Link class="nav-link active" aria-current="page" to="/">
                   Home
                 </Link>
               </li>

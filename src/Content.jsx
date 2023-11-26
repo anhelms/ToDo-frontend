@@ -5,9 +5,11 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToDosShow } from "./ToDosShow";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
+  const [currentToDo, setCurrentToDo] = useState({});
 
   const handleIndexToDos = () => {
     console.log("another hello");
@@ -26,12 +28,24 @@ export function Content() {
     });
   };
 
+  const handleDestroyToDo = (toDo) => {
+    console.log("handleDestroyToDo", toDo);
+    axios.delete(`http://localhost:3000/to_dos/${toDo.id}.json`).then((response) => {
+      setToDos(toDos.filter((p) => p.id !== toDo.id));
+      handleClose();
+    });
+  };
+
   return (
     <main>
       <Routes>
         <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
         <Route path="/to-dos" element={<ToDosIndex toDos={toDos} />} />
+        <Route path="/" element={<ToDosIndex toDos={toDos} />} />
       </Routes>
+      <Modal>
+        <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
+      </Modal>
     </main>
   );
 }
