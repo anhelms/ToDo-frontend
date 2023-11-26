@@ -25,27 +25,19 @@ export function Content() {
     });
   };
 
-  const handleUpdateToDo = (id, params, successCallback) => {
-    console.log("handleUpdateToDo", params);
-    axios.patch(`http://localhost:3000/to_dos/${id}.json`, params).then((response) => {
-      setToDos(
-        toDos.map((toDo) => {
-          if (toDo.id === response.data.id) {
-            return response.data;
-          } else {
-            return toDo;
-          }
-        })
-      );
-      successCallback();
-      handleClose();
-    });
-  };
+  const handleDestroyToDo = (toDo) => {
+      console.log("handleDestroyToDo", toDo);
+        axios.delete(`http://localhost:3000/to_dos/${toDo.id}.json`).then((response) => {
+          setToDos(toDos.filter((p) => p.id !== toDo.id));
+             handleClose();
+        });
+    };
+    
 
   return (
     <main>
       <ToDosNew onCreateToDo={handleCreateToDo} />
-      <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} />
+      <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
       <ToDosIndex toDos={toDos} />
     </main>
   );
