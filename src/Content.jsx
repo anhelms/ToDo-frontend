@@ -6,8 +6,7 @@ import { ToDosShow } from "./ToDosShow";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
-  const [currentToDo, setCurrenToDo] = useState({});
-  const [toDos, setToDos] = useState([]);
+  const [currentToDo, setCurrentToDo] = useState({});
 
   const handleIndexToDos = () => {
     console.log("another hello");
