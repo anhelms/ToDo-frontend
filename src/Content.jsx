@@ -78,6 +78,6 @@ export function Content() {
         <h2>To Dos</h2>
         <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
       </Modal>
-    </div className="container>
+    </div>
   );
 }
