@@ -1,9 +1,12 @@
+import axios from "axios";
 import { ToDosNew } from "./ToDosNew";
 import { ToDosIndex } from "./ToDosIndex";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { ToDosShow } from "./ToDosShow";
 import { Modal } from "./Modal";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export function Content() {
   const [toDos, setToDos] = useState([]);
@@ -60,17 +63,20 @@ export function Content() {
     axios.delete(`http://localhost:3000/to_dos/${toDo.id}.json`).then((response) => {
       setToDos(toDos.filter((p) => p.id !== toDo.id));
       handleClose();
+      console.log(response);
     });
   };
 
   return (
     <main>
-      <ToDosNew onCreateToDo={handleCreateToDo} />
-      <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
-      <ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />
-      <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} />
+      <Routes>
+        <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
+        <Route path="/to-dos" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
+        <Route path="/" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
+      </Routes>
       <Modal show={isToDosShowVisible} onClose={handleClose}>
-        <h2>To Do's</h2>
+        <h2>To Dos</h2>
+        <ToDosShow toDo={currentToDo} onUpdateToDo={handleUpdateToDo} onDestroyToDo={handleDestroyToDo} />
       </Modal>
     </main>
   );
