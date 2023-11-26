@@ -71,7 +71,7 @@ export function Content() {
     <main>
       <Routes>
         <Route path="/to-dos/new" element={<ToDosNew onCreateToDo={handleCreateToDo} />} />
-        <Route path="/to-dos" element={<ToDosIndex toDos={toDos} onToDoShow={handleShowToDo} />} />
+        <Route path="/to-dos" element={<ToDosIndex toDos={toDos} onShowToDo={handleShowToDo} />} />
         <Route path="/" element={<ToDosIndex toDos={toDos} />} />
       </Routes>
       <Modal show={isToDosShowVisible} onClose={handleClose}>
