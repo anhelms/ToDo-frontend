@@ -1,8 +1,18 @@
+import { useState } from "react";
+
 export function ToDosShow(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
+    params.append("completed", isItChecked);
     props.onUpdateToDo(props.toDo.id, params, () => event.target.reset());
+  };
+
+  const [isItChecked, setIsItChecked] = useState(props.toDo.completed);
+
+  const checkCheckbox = (value) => {
+    console.log(value);
+    setIsItChecked(!value);
   };
 
   return (
@@ -23,7 +33,12 @@ export function ToDosShow(props) {
           <input defaultValue={props.toDo.deadline} className="form-control" name="deadline" type="date" />
         </div>
         <div className="form-group">
-          <input defaultValue={props.toDo.completed} name="completed" type="checkbox" />
+          <input
+            checked={isItChecked}
+            name="completed"
+            type="checkbox"
+            onChange={() => checkCheckbox(props.toDo.completed)}
+          />
         </div>
         <button type="submit"> Update Task</button>
       </form>
