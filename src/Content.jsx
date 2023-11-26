@@ -1,8 +1,15 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { ToDosIndex } from "./ToDosIndex";
+
 export function Content() {
+    const [todos, setToDos] = useState([]);
+
+    const handleIndex
+
     return (
-      <main>
-        <h1>Welcome to React!</h1>
-      </main>
+      <div>
+        <ToDosIndex todos={todos} />
+      </div>
     )
-  }
-  
+}
